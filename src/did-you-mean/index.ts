@@ -1,26 +1,28 @@
-import { view, Events, Store, Tag } from '@storefront/core';
+import { utils, view, Component, Events, Store } from '@storefront/core';
 
-interface Opts {
-  didYouMeans: Store.Linkable[];
+@view('gb-did-you-mean', require('./index.html'))
+class DidYouMean extends Component {
+
+  state: DidYouMean.State = {
+    didYouMeans: []
+  };
+
+  constructor() {
+    super();
+    this.expose('didYouMean');
+
+    this.flux.on(Events.DID_YOU_MEANS_UPDATED, this.updateDidYouMeans);
+  }
+
+  updateDidYouMeans = (didYouMeans: Store.Linkable[]) =>
+    !(didYouMeans.length === 0 && this.state.didYouMeans.length === 0)
+    && this.set({ didYouMeans: utils.mapToSearchActions(didYouMeans, this.flux) })
 }
 
-interface DidYouMean extends Tag.Instance { }
-
-@view('gb-did-you-mean', require('./index.html'), {
-  didYouMeans: []
-})
-class DidYouMean {
-  state: Opts;
-
-  // constructor() {
-  //   this.flux.on(Events.DID_YOU_MEANS_UPDATED, this.updateDidYouMeans);
-  // }
-
-  // onUpdate({ ui }: { ui: Opts }) { return ui; }
-  //
-  // updateDidYouMeans(didYouMeans: Store.Linkable[]) {
-  //   this.update({ state: { ...this.state, didYouMeans } });
-  // }
+namespace DidYouMean {
+  export interface State {
+    didYouMeans: Store.Linkable[];
+  }
 }
 
 export default DidYouMean;
