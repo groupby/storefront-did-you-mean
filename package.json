@@ -38,7 +38,10 @@
     "restart": {
       "watchFiles": "src/**/*.{ts,html,css}",
       "copyFiles": "src/**/*.{html,css}",
-      "testFiles": ["test/bootstrap.ts", "test/**/*.ts"],
+      "testFiles": [
+        "test/bootstrap.ts",
+        "test/**/*.ts"
+      ],
       "releaseOpts": {
         "public": true
       }
