@@ -4,6 +4,6 @@ import suite from './_suite';
 
 suite('package', ({ expect }) => {
   it('should expose DidYouMean', () => {
-    expect(pkg).to.eq(DidYouMean);
+    expect(pkg.DidYouMean).to.eq(DidYouMean);
   });
 });
