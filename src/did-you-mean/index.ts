@@ -1,16 +1,14 @@
-import { utils, view, Component, Events, Store } from '@storefront/core';
+import { tag, utils, Events, Store, Tag } from '@storefront/core';
 
-@view('gb-did-you-mean', require('./index.html'))
-class DidYouMean extends Component {
+@tag('gb-did-you-mean', require('./index.html'))
+class DidYouMean {
 
   state: DidYouMean.State = {
     didYouMeans: []
   };
 
-  constructor() {
-    super();
+  init() {
     this.expose('didYouMean');
-
     this.flux.on(Events.DID_YOU_MEANS_UPDATED, this.updateDidYouMeans);
   }
 
@@ -19,6 +17,7 @@ class DidYouMean extends Component {
     && this.set({ didYouMeans: utils.mapToSearchActions(didYouMeans, this.flux) })
 }
 
+interface DidYouMean extends Tag<any, DidYouMean.State> { }
 namespace DidYouMean {
   export interface State {
     didYouMeans: Store.Linkable[];
