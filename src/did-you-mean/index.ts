@@ -1,5 +1,6 @@
-import { tag, utils, Events, Store, Tag } from '@storefront/core';
+import { alias, tag, utils, Events, Store, Tag } from '@storefront/core';
 
+@alias('didYouMean')
 @tag('gb-did-you-mean', require('./index.html'))
 class DidYouMean {
 
@@ -8,7 +9,6 @@ class DidYouMean {
   };
 
   init() {
-    this.expose('didYouMean');
     this.flux.on(Events.DID_YOU_MEANS_UPDATED, this.updateDidYouMeans);
   }
 
