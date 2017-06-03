@@ -7,25 +7,13 @@ suite('DidYouMean', ({ expect, spy, stub }) => {
 
   beforeEach(() => didYouMean = new DidYouMean());
 
-  describe('init()', () => {
+  describe('constructor()', () => {
     it('should have initial state', () => {
-      didYouMean.expose = () => null;
-      didYouMean.flux = <any>{ on: () => null };
-
-      didYouMean.init();
-
       expect(didYouMean.state).to.eql({ didYouMeans: [] });
     });
+  });
 
-    it('should call expose()', () => {
-      const expose = didYouMean.expose = spy();
-      didYouMean.flux = <any>{ on: () => null };
-
-      didYouMean.init();
-
-      expect(expose.calledWith('didYouMean')).to.be.true;
-    });
-
+  describe('init()', () => {
     it('should listen for DID_YOU_MEANS_UPDATED', () => {
       const on = spy();
       didYouMean.flux = <any>{ on };
