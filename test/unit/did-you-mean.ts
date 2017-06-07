@@ -21,7 +21,7 @@ suite('DidYouMean', ({ expect, spy, stub }) => {
 
       didYouMean.init();
 
-      expect(on.calledWith(Events.DID_YOU_MEANS_UPDATED, didYouMean.updateDidYouMeans)).to.be.true;
+      expect(on).to.be.calledWith(Events.DID_YOU_MEANS_UPDATED, didYouMean.updateDidYouMeans);
     });
   });
 
@@ -35,8 +35,8 @@ suite('DidYouMean', ({ expect, spy, stub }) => {
 
       didYouMean.updateDidYouMeans(didYouMeans);
 
-      expect(mapToSearchActions.calledWith(didYouMeans, flux)).to.be.true;
-      expect(set.calledWith({ didYouMeans: processed })).to.be.true;
+      expect(mapToSearchActions).to.be.calledWith(didYouMeans, flux);
+      expect(set).to.be.calledWith({ didYouMeans: processed });
     });
 
     it('should not set didYouMeans if both empty', () => {
