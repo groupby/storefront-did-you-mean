@@ -1,6 +1,7 @@
-import { alias, tag, utils, Events, Store, Tag } from '@storefront/core';
+import { alias, origin, tag, utils, Events, Store, Tag } from '@storefront/core';
 
 @alias('didYouMean')
+@origin('dym')
 @tag('gb-did-you-mean', require('./index.html'))
 class DidYouMean {
 
