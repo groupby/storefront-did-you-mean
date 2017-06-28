@@ -28,14 +28,14 @@ suite('DidYouMean', ({ expect, spy, stub }) => {
   describe('updateDidYouMeans()', () => {
     it('should set didYouMeans', () => {
       const didYouMeans: any[] = ['a', 'b'];
-      const flux = didYouMean.flux = <any>{ c: 'd' };
+      const actions = didYouMean.actions = <any>{ c: 'd' };
       const processed = ['e', 'f'];
       const set = didYouMean.set = spy();
       const mapToSearchActions = stub(utils, 'mapToSearchActions').returns(processed);
 
       didYouMean.updateDidYouMeans(didYouMeans);
 
-      expect(mapToSearchActions).to.be.calledWith(didYouMeans, flux);
+      expect(mapToSearchActions).to.be.calledWith(didYouMeans, actions);
       expect(set).to.be.calledWith({ didYouMeans: processed });
     });
 
