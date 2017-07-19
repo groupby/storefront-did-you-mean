@@ -2,10 +2,13 @@ import { utils, Events } from '@storefront/core';
 import DidYouMean from '../../src/did-you-mean';
 import suite from './_suite';
 
-suite('DidYouMean', ({ expect, spy, stub }) => {
+suite('DidYouMean', ({ expect, spy, stub, configurable, aliased }) => {
   let didYouMean: DidYouMean;
 
   beforeEach(() => didYouMean = new DidYouMean());
+
+  configurable(DidYouMean);
+  aliased(DidYouMean);
 
   describe('constructor()', () => {
     it('should have initial state', () => {
