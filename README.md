@@ -1,4 +1,6 @@
-# storefront-did-you-mean
+# StoreFront did-you-mean
+
+StoreFront <gb-did-you-mean> component
 
 [![npm (scoped with tag)](https://img.shields.io/npm/v/@storefront/did-you-mean.svg?style=flat-square)](https://www.npmjs.com/package/@storefront/did-you-mean)
 [![CircleCI branch](https://img.shields.io/circleci/project/github/groupby/storefront-did-you-mean/master.svg?style=flat-square)](https://circleci.com/gh/groupby/storefront-did-you-mean/tree/master)
@@ -11,4 +13,66 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://choosealicense.com/licenses/mit/)
 [![Greenkeeper badge](https://badges.greenkeeper.io/groupby/storefront-did-you-mean.svg)](https://greenkeeper.io/)
 
-StoreFront did-you-mean component
+## Getting Started
+
+This module requires [`@storefront/core`](https://www.npmjs.com/package/@storefront/core) for the component to render
+and receive data from GroupBy microservices.
+
+### Prerequisites
+
+This module is meant to be used in a `node` environment which is bundled for use in the browser.
+
+### Installing
+
+Use `npm` or `yarn` to install in a `node` project that uses `webpack`, `browserify` or similar.
+
+```sh
+npm install --save @storefront/did-you-mean
+# or
+yarn add @storefront/did-you-mean
+```
+
+## Usage
+
+This module provides the `<gb-did-you-mean>` component for use with StoreFront.
+
+### Mount tag
+
+```html
+<!-- index.html -->
+<body>
+  <gb-did-you-mean></gb-did-you-mean>
+</body>
+```
+
+```js
+// index.js
+storefront.mount('gb-did-you-mean');
+```
+
+## Running the tests
+
+Tests can be run to generate coverage information.
+Once run, open `coverage/index.html` in your browser to view coverage breakdown.
+
+```sh
+npm start coverage
+# or
+yarn start coverage
+```
+
+Tests can be run continuously for development
+
+```sh
+npm run tdd
+# or
+yarn tdd
+```
+
+Tests can also be run alone
+
+```sh
+npm test
+# or
+yarn test
+```
