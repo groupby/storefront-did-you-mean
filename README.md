@@ -1,6 +1,6 @@
 # StoreFront did-you-mean
 
-StoreFront <gb-did-you-mean> component
+StoreFront `<gb-did-you-mean>` component
 
 [![npm (scoped with tag)](https://img.shields.io/npm/v/@storefront/did-you-mean.svg?style=flat-square)](https://www.npmjs.com/package/@storefront/did-you-mean)
 [![CircleCI branch](https://img.shields.io/circleci/project/github/groupby/storefront-did-you-mean/master.svg?style=flat-square)](https://circleci.com/gh/groupby/storefront-did-you-mean/tree/master)
