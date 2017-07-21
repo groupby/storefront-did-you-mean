@@ -1,6 +1,6 @@
 {
   "name": "@storefront/did-you-mean",
-  "version": "0.0.7-development",
+  "version": "1.4.1",
   "description": "StoreFront did-you-mean component",
   "keywords": [
     "storefront",
