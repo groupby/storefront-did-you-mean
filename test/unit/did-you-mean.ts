@@ -1,4 +1,4 @@
-import { utils, Events } from '@storefront/core';
+import { utils, Events, Selectors } from '@storefront/core';
 import DidYouMean from '../../src/did-you-mean';
 import suite from './_suite';
 
@@ -21,10 +21,27 @@ suite('DidYouMean', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAl
       const on = spy();
       didYouMean.flux = <any>{ on };
       didYouMean.expose = () => null;
+      didYouMean.select = spy();
+      didYouMean.updateDidYouMeans = spy();
 
       didYouMean.init();
 
       expect(on).to.be.calledWith(Events.DID_YOU_MEANS_UPDATED, didYouMean.updateDidYouMeans);
+    });
+
+    it('should call updateDidYouMeans', () => {
+      const didYouMeans = [1, 2, 3];
+      const select = didYouMean.select = stub();
+      const updateDidYouMeans = didYouMean.updateDidYouMeans = spy();
+      const on = spy();
+      didYouMean.flux = <any>{ on };
+      didYouMean.expose = () => null;
+      select.withArgs(Selectors.didYouMean).returns(didYouMeans);
+
+      didYouMean.init();
+
+      expect(select).to.be.calledWithExactly(Selectors.didYouMean);
+      expect(updateDidYouMeans).to.be.calledWithExactly(didYouMeans);
     });
   });
 
