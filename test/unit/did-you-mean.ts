@@ -21,8 +21,8 @@ suite('DidYouMean', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAl
       const on = spy();
       didYouMean.flux = <any>{ on };
       didYouMean.expose = () => null;
-      didYouMean.select = spy();
-      didYouMean.updateDidYouMeans = spy();
+      didYouMean.select = () => null;
+      didYouMean.updateDidYouMeans = () => null;
 
       didYouMean.init();
 
@@ -33,8 +33,7 @@ suite('DidYouMean', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAl
       const didYouMeans = [1, 2, 3];
       const select = didYouMean.select = stub();
       const updateDidYouMeans = didYouMean.updateDidYouMeans = spy();
-      const on = spy();
-      didYouMean.flux = <any>{ on };
+      didYouMean.flux = <any>{ on: () => null };
       didYouMean.expose = () => null;
       select.withArgs(Selectors.didYouMean).returns(didYouMeans);
 
