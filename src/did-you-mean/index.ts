@@ -1,4 +1,4 @@
-import { alias, configurable, origin, tag, utils, Events, Store, Tag } from '@storefront/core';
+import { alias, configurable, origin, tag, utils, Events, Selectors, Store, Tag } from '@storefront/core';
 
 @configurable
 @alias('didYouMean')
@@ -11,6 +11,7 @@ class DidYouMean {
   };
 
   init() {
+    this.updateDidYouMeans(this.select(Selectors.didYouMean));
     this.flux.on(Events.DID_YOU_MEANS_UPDATED, this.updateDidYouMeans);
   }
 
