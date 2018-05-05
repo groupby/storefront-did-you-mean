@@ -12,7 +12,7 @@ class DidYouMean {
 
   init() {
     this.updateDidYouMeans(this.select(Selectors.didYouMean));
-    this.flux.on(Events.DID_YOU_MEANS_UPDATED, this.updateDidYouMeans);
+    this.subscribe(Events.DID_YOU_MEANS_UPDATED, this.updateDidYouMeans);
   }
 
   updateDidYouMeans = (didYouMeans: string[]) =>
