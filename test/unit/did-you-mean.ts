@@ -18,22 +18,21 @@ suite('DidYouMean', ({ expect, spy, stub, itShouldBeConfigurable, itShouldHaveAl
 
   describe('init()', () => {
     it('should listen for DID_YOU_MEANS_UPDATED', () => {
-      const on = spy();
-      didYouMean.flux = <any>{ on };
+      const subscribe = didYouMean.subscribe = spy();
       didYouMean.expose = () => null;
       didYouMean.select = () => null;
       didYouMean.updateDidYouMeans = () => null;
 
       didYouMean.init();
 
-      expect(on).to.be.calledWith(Events.DID_YOU_MEANS_UPDATED, didYouMean.updateDidYouMeans);
+      expect(subscribe).to.be.calledWith(Events.DID_YOU_MEANS_UPDATED, didYouMean.updateDidYouMeans);
     });
 
     it('should call updateDidYouMeans', () => {
       const didYouMeans = [1, 2, 3];
       const select = didYouMean.select = stub();
       const updateDidYouMeans = didYouMean.updateDidYouMeans = spy();
-      didYouMean.flux = <any>{ on: () => null };
+      didYouMean.subscribe = () => null;
       didYouMean.expose = () => null;
       select.withArgs(Selectors.didYouMean).returns(didYouMeans);
 
