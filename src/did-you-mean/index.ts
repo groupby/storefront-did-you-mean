@@ -11,9 +11,7 @@ class DidYouMean {
 
   init() {
     this.subscribe(Events.DID_YOU_MEANS_UPDATED, this.updateDidYouMeans);
-  }
 
-  onBeforeMount() {
     this.updateDidYouMeans(this.select(Selectors.didYouMean));
   }
 

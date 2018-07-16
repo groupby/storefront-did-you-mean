@@ -17,24 +17,16 @@ suite('DidYouMean', ({ expect, spy, stub, itShouldBeConfigurable, itShouldProvid
   });
 
   describe('init()', () => {
-    it('should listen for DID_YOU_MEANS_UPDATED', () => {
+    it('should listen for DID_YOU_MEANS_UPDATED and set up initial state', () => {
       const subscribe = (didYouMean.subscribe = spy());
-
-      didYouMean.init();
-
-      expect(subscribe).to.be.calledWith(Events.DID_YOU_MEANS_UPDATED, didYouMean.updateDidYouMeans);
-    });
-  });
-
-  describe('onBeforeMount()', () => {
-    it('should call updateDidYouMeans', () => {
       const didYouMeans = [1, 2, 3];
       const select = (didYouMean.select = stub());
       const updateDidYouMeans = (didYouMean.updateDidYouMeans = spy());
       select.withArgs(Selectors.didYouMean).returns(didYouMeans);
 
-      didYouMean.onBeforeMount();
+      didYouMean.init();
 
+      expect(subscribe).to.be.calledWith(Events.DID_YOU_MEANS_UPDATED, didYouMean.updateDidYouMeans);
       expect(select).to.be.calledWithExactly(Selectors.didYouMean);
       expect(updateDidYouMeans).to.be.calledWithExactly(didYouMeans);
     });
