@@ -1,4 +1,10 @@
-# StoreFront did-you-mean
+# [MOVED] StoreFront did-you-mean
+
+* * *
+
+**This repository has been moved to <https://github.com/groupby/storefront>.**
+
+* * *
 
 StoreFront `<gb-did-you-mean>` component
 
